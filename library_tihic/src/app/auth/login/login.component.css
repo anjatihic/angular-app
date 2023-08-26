@@ -1,0 +1,35 @@
+.background{
+  width: 100vw;
+  height: 100vh;
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-misctexture01-beer-000-job598.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=c8c11b81dab216826115cf06f2257736");
+  background-size: cover;
+  background-color: rgb(152, 204, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-card{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 253, 253);
+  width: 20vw;
+  border-radius: 20px;
+  align-items: center;
+  padding: 30px 0px;
+}
+
+.form-input{
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  
+}
+
+.center-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
