@@ -1,0 +1,29 @@
+.background{
+  width: 100%;
+  background-image: url("https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pf-misctexture01-beer-000-job598.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=c8c11b81dab216826115cf06f2257736");
+  background-size: cover;
+  background-color: rgb(152, 204, 187);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-card{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 253, 253);
+  border-radius: 20px;
+  align-items: center;
+  width: 80vw;
+  margin-top: 50px;
+}
+
+.banner{
+  height: 300px;
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
