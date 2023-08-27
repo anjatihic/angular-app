@@ -27,6 +27,7 @@
 
       <hr *ngIf="created">
       <p *ngIf="created" class="success-message">New genre has been successfully created.</p>
+      <a routerLink="/newBook" *ngIf="created">Now you can create a book of this genre</a>
     </form>
   </div>
 </div>

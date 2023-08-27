@@ -31,9 +31,8 @@
         <div class="form-input form-group">
           <label for="genre">Genre</label>
           <select name="genre" id="genre" class="form-control">
-            <option value="1">genre 1</option>
-            <option value="2">genre 2</option>
-            <option value="3">genre 3</option>
+            <option value="" disabled selected hidden>Pick a genre...</option>
+            <option *ngFor="let genre of allGenres" value="{{genre.id}}">{{genre.name}}</option>
           </select>
         </div>
 

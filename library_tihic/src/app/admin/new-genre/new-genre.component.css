@@ -38,11 +38,6 @@
   margin-bottom: 30px;
   gap: 10px;
 }
-
-a {
-  margin-left: 15px;
-}
-
 .errorMessage{
   color: red;
   font-size: small;
