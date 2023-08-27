@@ -37,3 +37,8 @@
   margin-bottom: 30px;
   gap: 10px;
 }
+
+.author-pic{
+  width: 80px;
+  margin: 15px;
+}
