@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthorService } from 'src/app/services/author.service';
 
 @Component({
   selector: 'app-new-author',
@@ -18,8 +19,27 @@ export class NewAuthorComponent {
     bio: new FormControl('', Validators.required)
   })
 
+  constructor(private authorService: AuthorService) {}
+
   onSubmit() {
+    let fName = this.newAuthorForm.controls['fName'].value!;
+    let lName = this.newAuthorForm.controls['lName'].value!;
+    let picUrl = this.newAuthorForm.controls['picUrl'].value!;
+    let dateBorn = this.newAuthorForm.controls['dateBorn'].value!;
+    let bio = this.newAuthorForm.controls['bio'].value!;
+
+    let dateDied = this.newAuthorForm.controls['dateDied'].value;
+
+    this.newAuthorForm.reset();
     
+    if(dateDied === undefined){
+      console.log('alive')
+      this.authorService.createNewAuthor(fName, lName, picUrl, dateBorn, bio);
+    }else{
+      console.log('dead')
+      this.authorService.createNewAuthor(fName, lName, picUrl, dateBorn, bio, dateDied!);
+    }
+    this.created = true;
   }
 
 }

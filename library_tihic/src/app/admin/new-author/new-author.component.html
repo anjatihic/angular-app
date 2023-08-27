@@ -4,13 +4,17 @@
     <form [formGroup]="newAuthorForm" (ngSubmit)="onSubmit()">
       <div class="double-input">
         <div class="form-input form-group">
-          <label for="fName">Name</label>
+          <label for="fName">Name*</label>
           <input type="text" id="fName" name="fName" class="form-control" placeholder="Type authors name" formControlName="fName">
+          <p *ngIf="(newAuthorForm.controls['fName'].dirty || newAuthorForm.controls['fName'].touched) &&  !newAuthorForm.controls['fName'].valid"
+          class="errorMessage">Please provide the authors name</p>
         </div>
 
         <div class="form-input form-group">
-          <label for="lName">Surname</label>
+          <label for="lName">Surname*</label>
           <input type="text" id="lName" name="lName" class="form-control" placeholder="Type authors surname" formControlName="lName">
+          <p *ngIf="(newAuthorForm.controls['lName'].dirty || newAuthorForm.controls['lName'].touched) &&  !newAuthorForm.controls['lName'].valid"
+          class="errorMessage">Please provide the authors surname</p>
         </div>
       </div>
 
@@ -18,16 +22,20 @@
         <img class="author-pic" *ngIf="newAuthorForm.controls['picUrl'].dirty" src="{{newAuthorForm.controls['picUrl'].value}}" alt="author">
 
         <div class="form-input form-group">
-          <label for="picUrl">Picture URL</label>
+          <label for="picUrl">Picture URL*</label>
           <input type="url" id="picUrl" name="picUrl" class="form-control" placeholder="Insert photo URL" formControlName="picUrl">
+          <p *ngIf="(newAuthorForm.controls['picUrl'].dirty || newAuthorForm.controls['picUrl'].touched) &&  !newAuthorForm.controls['picUrl'].valid"
+          class="errorMessage">Please provide a valid photo url</p>
         </div>
 
       </div>
 
       <div class="double-input">
         <div class="form-input form-group">
-          <label for="dateBorn">Date born</label>
+          <label for="dateBorn">Date born*</label>
           <input type="date" id="dateBorn" name="dateBorn" class="form-control" placeholder="Type date of birth" formControlName="dateBorn">
+          <p *ngIf="(newAuthorForm.controls['dateBorn'].dirty || newAuthorForm.controls['dateBorn'].touched) &&  !newAuthorForm.controls['dateBorn'].valid"
+          class="errorMessage">Please provide the authors date of birth</p>
         </div>
 
         <div class="form-input form-group">
@@ -37,14 +45,20 @@
       </div>
 
       <div class="form-input form-group">
-        <label for="bio">About author</label>
+        <label for="bio">About author*</label>
         <textarea id="bio" name="bio" placeholder="Type about an author" class="form-control" formControlName="bio"></textarea>
+        <p *ngIf="(newAuthorForm.controls['bio'].dirty || newAuthorForm.controls['bio'].touched) &&  !newAuthorForm.controls['bio'].valid" 
+        class="errorMessage">Please write info about the author</p>
       </div>
 
       <div class="center-button">
         <button type="submit" class="btn btn-info" [disabled]="!newAuthorForm.valid">ADD AUTHOR</button>
         <button type="reset" class="btn btn-secondary" [disabled]="newAuthorForm.untouched && !newAuthorForm.dirty">CLEAR</button>
       </div>
+
+      <hr *ngIf="created">
+      <p *ngIf="created" class="success-message">New author has been successfully created.</p>
+      <a routerLink="/newBook" *ngIf="created">Now you can create a book written by this author</a>
     </form>
   </div>
 </div>

@@ -42,3 +42,13 @@
   width: 80px;
   margin: 15px;
 }
+
+.errorMessage{
+  color: red;
+  font-size: small;
+}
+
+.success-message{
+  color: green;
+  font-size: small;
+}
