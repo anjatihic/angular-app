@@ -77,6 +77,9 @@
         <button type="submit" class="btn btn-info" [disabled]="!newBookForm.valid">ADD BOOK</button>
         <button type="reset" class="btn btn-secondary" [disabled]="newBookForm.untouched && !newBookForm.dirty">CLEAR</button>
       </div>
+
+      <hr *ngIf="created">
+      <p *ngIf="created" class="success-message">New book has been successfully created.</p>
     </form>
   </div>
 </div>
