@@ -1,15 +1,38 @@
-import { Author } from "./author.model";
-import { Genre } from "./genre.model";
-
-export interface Book {
-  id: string;
+export class Book {
+  id?: string;
   title: string;
-  author: Author;
-  genre: Genre;
+  authorId: string;
+  genreId: string;
   allQuantity: number;
-  numOfBorrowed: number;
+  availableBooks: number;
   datePublished: Date;
   synopsis: string;
   pages: number;
   coverPicUrl: string;
+
+  constructor(
+    title: string,
+    authorId: string,
+    genreId: string,
+    allQuantity: number,
+    datePublished: string,
+    synopsis: string,
+    pages: number,
+    coverPicUrl: string,
+    id?: string
+  ){
+    this.title = title;
+    this.authorId = authorId;
+    this.genreId = genreId;
+    this.allQuantity = allQuantity;
+    this.datePublished = new Date(datePublished);
+    this.synopsis = synopsis;
+    this.pages = pages;
+    this.coverPicUrl = coverPicUrl;
+
+    this.availableBooks = allQuantity;
+
+    id ? this.id = id : this.id = undefined;
+
+  }
 }

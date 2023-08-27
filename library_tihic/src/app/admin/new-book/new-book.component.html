@@ -1,43 +1,59 @@
 <div class="background">
   <div class="center-card">
     <h1>Add book</h1>
-    <form>
+    <form [formGroup]="newBookForm" (ngSubmit)="onSubmit()">
       <div class="form-input form-group">
         <label for="title">Title</label>
-        <input type="text" id="title" name="title" class="form-control" placeholder="Type book's title">
+        <input type="text" id="title" name="title" class="form-control" placeholder="Type book's title" formControlName="title">
+        <p *ngIf="(newBookForm.controls['title'].dirty || newBookForm.controls['title'].touched) &&  !newBookForm.controls['title'].valid"
+          class="errorMessage">Please provide the books title</p>
       </div>
 
       <div class="form-input form-group">
         <label for="author">Author</label>
-        <select name="author" id="author" class="form-control">
+        <select name="author" id="author" class="form-control" formControlName="authorId">
           <option value="" disabled selected hidden>Pick an author...</option>
             <option *ngFor="let author of allAuthors" value="{{author.id}}">{{author.lName}}, {{author.fName}}</option>
         </select>
+        <p *ngIf="(newBookForm.controls['authorId'].dirty || newBookForm.controls['authorId'].touched) &&  !newBookForm.controls['authorId'].valid"
+          class="errorMessage">Please pick an author</p>
       </div>
       <a routerLink="/newAuthor"> The author doesn't exist? CLICK HERE</a>
 
-      <div class="form-input form-group">
-        <label for="picUrl">Picture URL</label>
-        <input type="url" id="picUrl" name="picUrl" class="form-control" placeholder="Insert cover photo URL">
+      <div class="double-input">
+        <img class="cover-photo" *ngIf="newBookForm.controls['photoUrl'].dirty" src="{{newBookForm.controls['photoUrl'].value}}" alt="cover pic">
+
+        <div class="form-input form-group">
+          <label for="picUrl">Picture URL</label>
+          <input type="url" id="picUrl" name="picUrl" class="form-control" placeholder="Insert cover photo URL" formControlName="photoUrl">
+          <p *ngIf="(newBookForm.controls['photoUrl'].dirty || newBookForm.controls['photoUrl'].touched) &&  !newBookForm.controls['photoUrl'].valid"
+          class="errorMessage">Please enter a valid cover url</p>
+        </div>
       </div>
 
       <div class="form-input form-group">
         <label for="syn">About book</label>
-        <textarea id="syn" name="syn" placeholder="Type about a book" class="form-control"></textarea>
+        <textarea id="syn" name="syn" placeholder="Type about a book" class="form-control" formControlName="syn"></textarea>
+        <p *ngIf="(newBookForm.controls['syn'].dirty || newBookForm.controls['syn'].touched) &&  !newBookForm.controls['syn'].valid"
+          class="errorMessage">Please write the book synopsis</p>
       </div>
 
       <div class="double-input">
         <div class="form-input form-group">
           <label for="genre">Genre</label>
-          <select name="genre" id="genre" class="form-control">
+          <select name="genre" id="genre" class="form-control" formControlName="genreId">
             <option value="" disabled selected hidden>Pick a genre...</option>
             <option *ngFor="let genre of allGenres" value="{{genre.id}}">{{genre.name}}</option>
           </select>
+          <p *ngIf="(newBookForm.controls['genreId'].dirty || newBookForm.controls['genreId'].touched) &&  !newBookForm.controls['genreId'].valid"
+          class="errorMessage">Please pick a genre</p>
         </div>
 
         <div class="form-input form-group">
           <label for="numPages">Number of pages</label>
-          <input type="number" id="numPages" name="numPages" class="form-control" placeholder="Number of pages">
+          <input type="number" id="numPages" name="numPages" class="form-control" placeholder="Number of pages" formControlName="pages">
+          <p *ngIf="(newBookForm.controls['pages'].dirty || newBookForm.controls['pages'].touched) &&  !newBookForm.controls['pages'].valid"
+          class="errorMessage">Please enter a valid number of pages</p>
         </div>
       </div>
 
@@ -45,17 +61,21 @@
 
       <div class="form-input form-group">
         <label for="datePublish">Date first published</label>
-        <input type="date" id="datePublish" name="datePublish" class="form-control">
+        <input type="date" id="datePublish" name="datePublish" class="form-control" formControlName="datePublished">
+        <p *ngIf="(newBookForm.controls['datePublished'].dirty || newBookForm.controls['datePublished'].touched) &&  !newBookForm.controls['datePublished'].valid"
+          class="errorMessage">Please enter a publish date</p>
       </div>
 
       <div class="form-input form-group">
         <label for="numCopies">Number of available copies</label>
-        <input type="number" id="numCopies" name="numCopies" class="form-control" placeholder="Number of available copies">
+        <input type="number" id="numCopies" name="numCopies" class="form-control" placeholder="Number of available copies" formControlName="quantity">
+        <p *ngIf="(newBookForm.controls['quantity'].dirty || newBookForm.controls['quantity'].touched) &&  !newBookForm.controls['quantity'].valid"
+          class="errorMessage">Please enter a valid number of available copies</p>
       </div>
 
       <div class="center-button">
-        <button type="submit" class="btn btn-info">ADD BOOK</button>
-        <button type="button" class="btn btn-secondary">CLEAR</button>
+        <button type="submit" class="btn btn-info" [disabled]="!newBookForm.valid">ADD BOOK</button>
+        <button type="reset" class="btn btn-secondary" [disabled]="newBookForm.untouched && !newBookForm.dirty">CLEAR</button>
       </div>
     </form>
   </div>
