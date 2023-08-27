@@ -17,7 +17,7 @@ export class AuthorService {
     profilePicUrl: string, dateBorn: string, bio: string,
     dateDied?: string
   ){
-    console.log(dateDied);
+    
     const authorData = new Author(fName, lName, profilePicUrl, dateBorn, bio, dateDied);
     
     if(dateDied){

@@ -33,10 +33,8 @@ export class NewAuthorComponent {
     this.newAuthorForm.reset();
     
     if(dateDied === undefined){
-      console.log('alive')
       this.authorService.createNewAuthor(fName, lName, picUrl, dateBorn, bio);
     }else{
-      console.log('dead')
       this.authorService.createNewAuthor(fName, lName, picUrl, dateBorn, bio, dateDied!);
     }
     this.created = true;
