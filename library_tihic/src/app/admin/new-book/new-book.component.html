@@ -10,9 +10,8 @@
       <div class="form-input form-group">
         <label for="author">Author</label>
         <select name="author" id="author" class="form-control">
-          <option value="1">Author 1</option>
-          <option value="2">Author 2</option>
-          <option value="3">Author 3</option>
+          <option value="" disabled selected hidden>Pick an author...</option>
+            <option *ngFor="let author of allAuthors" value="{{author.id}}">{{author.lName}}, {{author.fName}}</option>
         </select>
       </div>
       <a routerLink="/newAuthor"> The author doesn't exist? CLICK HERE</a>

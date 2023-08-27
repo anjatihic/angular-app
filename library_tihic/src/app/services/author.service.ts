@@ -10,6 +10,9 @@ export class AuthorService {
   error = new Subject<string>();
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/author.json";
   
+  allAuthors: Author[] = [];
+  allAuthorsSub = new Subject<Author[]>();
+
   constructor( private http: HttpClient) { }
 
   createNewAuthor(
@@ -31,7 +34,16 @@ export class AuthorService {
       }, error => {
         this.error.next(error.message);
       })
+  }
 
+  getAllAuthors(){
+    this.http.get(this.DATABASE_URL)
+    .subscribe((res: any) => {
+      for(let key in res){
+        this.allAuthors.push({...res[key], id: key});
+      }
 
+      this.allAuthorsSub.next(this.allAuthors);
+    })
   }
 }
