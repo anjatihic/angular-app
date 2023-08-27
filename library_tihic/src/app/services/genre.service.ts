@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Genre } from '../models/genre.model';
-import {Subject} from "rxjs";
+import {Subject, map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +10,6 @@ export class GenreService {
 
   error = new Subject<string>();
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/genre.json"
-
-  allGenresSub = new Subject<Genre[]>();
-  allGenres: Genre[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -29,13 +26,14 @@ export class GenreService {
 
   getAllGenres(){
 
-    this.http.get(this.DATABASE_URL)
-      .subscribe((res: any) => {
+    return this.http.get(this.DATABASE_URL)
+      .pipe( map((res: any) => {
+        const allGenres = [];
         for(let key in res){
-          this.allGenres.push({...res[key], id: key});
+          allGenres.push({...res[key], id: key});
         }
-        this.allGenresSub.next(this.allGenres);
-      })
+        return allGenres;
+      }))
   }
 
 }

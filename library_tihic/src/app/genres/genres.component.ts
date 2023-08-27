@@ -15,10 +15,11 @@ export class GenresComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.genreService.getAllGenres();
-    this.genreService.allGenresSub.subscribe( genres => {
-      this.allGenres = genres;
-    })
+    this.genreService.getAllGenres().subscribe(
+      (res => {
+        this.allGenres = res;
+      })
+    );
     
   }
 

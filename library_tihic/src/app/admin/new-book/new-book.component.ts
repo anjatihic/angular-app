@@ -33,14 +33,12 @@ export class NewBookComponent implements OnInit {
     private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.genreService.getAllGenres();
-    this.genreService.allGenresSub.subscribe( genres => {
-      this.allGenres = genres;
+    this.genreService.getAllGenres().subscribe(res => {
+      this.allGenres = res;
     })
 
-    this.authorService.getAllAuthors();
-    this.authorService.allAuthorsSub.subscribe( authors => {
-      this.allAuthors = authors;
+    this.authorService.getAllAuthors().subscribe( res => {
+      this.allAuthors = res;
     })
   }
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Author } from '../models/author.model';
 
 @Injectable({
@@ -9,9 +9,6 @@ import { Author } from '../models/author.model';
 export class AuthorService {
   error = new Subject<string>();
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/author.json";
-  
-  allAuthors: Author[] = [];
-  allAuthorsSub = new Subject<Author[]>();
 
   constructor( private http: HttpClient) { }
 
@@ -37,13 +34,13 @@ export class AuthorService {
   }
 
   getAllAuthors(){
-    this.http.get(this.DATABASE_URL)
-    .subscribe((res: any) => {
-      for(let key in res){
-        this.allAuthors.push({...res[key], id: key});
-      }
-
-      this.allAuthorsSub.next(this.allAuthors);
-    })
+    return this.http.get(this.DATABASE_URL)
+      .pipe( map((res: any) => {
+        const allAuthors = [];
+        for(let key in res){
+          allAuthors.push({...res[key], id: key});
+        }
+        return allAuthors;
+      }))
   }
 }
