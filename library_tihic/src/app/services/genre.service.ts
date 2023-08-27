@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Genre } from '../models/genre.model';
 import {Subject} from "rxjs";
-import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +34,6 @@ export class GenreService {
         for(let key in res){
           this.allGenres.push({...res[key], id: key});
         }
-
         this.allGenresSub.next(this.allGenres);
       })
   }

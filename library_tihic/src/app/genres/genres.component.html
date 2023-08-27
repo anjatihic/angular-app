@@ -1,1 +1,5 @@
-<p *ngFor="let genre of allGenres">{{genre.name}} - {{genre.id}}</p>
+<div class="background">
+  <button *ngFor="let genre of allGenres" class="genre-card">
+    <a routerLink="#">{{genre.name}}</a>
+  </button>
+</div>
