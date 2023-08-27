@@ -8,4 +8,5 @@ export interface User{
   email: string;
   dateRegistered: Date;
   loans: Loan[];
+  role: string;
 }
