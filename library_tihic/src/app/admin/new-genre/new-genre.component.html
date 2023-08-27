@@ -1,21 +1,32 @@
 <div class="background">
   <div class="center-card">
     <h1>Add genre</h1>
-    <form>
+    <form [formGroup]="newGenreForm" (ngSubmit)="onSubmit()">
       <div class="form-input form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" class="form-control" placeholder="Type name of genre">
+        <input type="text" id="name" name="name" class="form-control"  formControlName="name" placeholder="Type name of genre">
+        <p *ngIf="(newGenreForm.controls['name'].dirty || newGenreForm.controls['name'].touched) &&  !newGenreForm.controls['name'].valid" 
+        class="errorMessage">
+          Please provide a genre name
+        </p>
       </div>
 
       <div class="form-input form-group">
         <label for="about">About genre</label>
-        <textarea id="about" name="about" placeholder="Type about a genre" class="form-control"></textarea>
+        <textarea id="about" name="about" placeholder="Type about a genre" class="form-control" formControlName="about"></textarea>
+        <p *ngIf="(newGenreForm.controls['about'].dirty || newGenreForm.controls['about'].touched) &&  !newGenreForm.controls['about'].valid" 
+        class="errorMessage">
+          Please provide a about genre text
+        </p>
       </div>
 
       <div class="center-button">
-        <button type="submit" class="btn btn-info">ADD GENRE</button>
-        <button type="button" class="btn btn-secondary">CLEAR</button>
+        <button type="submit" class="btn btn-info" [disabled]="!newGenreForm.valid">ADD GENRE</button>
+        <button type="reset" class="btn btn-secondary" [disabled]="newGenreForm.untouched && !newGenreForm.dirty">CLEAR</button>
       </div>
+
+      <hr *ngIf="created">
+      <p *ngIf="created" class="success-message">New genre has been successfully created.</p>
     </form>
   </div>
 </div>
