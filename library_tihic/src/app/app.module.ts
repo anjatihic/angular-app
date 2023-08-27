@@ -12,6 +12,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { NewAuthorComponent } from './admin/new-author/new-author.component';
 import { NewBookComponent } from './admin/new-book/new-book.component';
 import { NewGenreComponent } from './admin/new-genre/new-genre.component';
+import { GenresComponent } from './genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NewGenreComponent } from './admin/new-genre/new-genre.component';
     NavigationComponent,
     NewAuthorComponent,
     NewBookComponent,
-    NewGenreComponent
+    NewGenreComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
