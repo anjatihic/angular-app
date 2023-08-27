@@ -4,10 +4,10 @@ export class Genre {
   about: string;
 
 
-  constructor(name: string, about: string, id?: string){
-    this.name = name;
-    this.about = about;
+  constructor(){
+    this.name = '';
+    this.about = '';
 
-    id ? this.id = id : this.id = undefined;
+    this.id = '';
   }
 }

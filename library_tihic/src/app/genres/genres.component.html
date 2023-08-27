@@ -1,5 +1,5 @@
 <div class="background">
   <button *ngFor="let genre of allGenres" class="genre-card">
-    <a routerLink="#">{{genre.name}}</a>
+    <a routerLink="/genres/{{genre.id}}">{{genre.name}}</a>
   </button>
 </div>

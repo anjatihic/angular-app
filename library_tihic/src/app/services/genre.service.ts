@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Genre } from '../models/genre.model';
-import {Subject, map} from "rxjs";
+import {BehaviorSubject, Subject, map} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,23 @@ import {Subject, map} from "rxjs";
 export class GenreService {
 
   error = new Subject<string>();
-  DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/genre.json"
+  DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/genre.json";
 
-  constructor(private http: HttpClient) { }
+  allGenres: Genre[] = [];
+  loadedGenreSub = new BehaviorSubject<Genre>(new Genre());
+
+  constructor(private http: HttpClient) {
+    
+  }
+
+  init(){
+    
+  }
 
   createNewGenre(name: string, about: string){
-    const genreData = new Genre(name, about);
+    const genreData = new Genre();
+    genreData.about = about;
+    genreData.name = name;
 
     this.http.post(this.DATABASE_URL, genreData)
       .subscribe(response => {
@@ -34,6 +45,14 @@ export class GenreService {
         }
         return allGenres;
       }))
+  }
+
+  getGenreById(id: string){
+    return this.getAllGenres().subscribe(res => {
+      this.allGenres = res;
+      let genre = this.allGenres.find(g => g.id == id);
+      if (genre) this.loadedGenreSub.next(genre);
+    })
   }
 
 }

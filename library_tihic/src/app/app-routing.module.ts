@@ -7,6 +7,7 @@ import { NewAuthorComponent } from './admin/new-author/new-author.component';
 import { NewBookComponent } from './admin/new-book/new-book.component';
 import { NewGenreComponent } from './admin/new-genre/new-genre.component';
 import { GenresComponent } from './genres/genres.component';
+import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'newAuthor', component: NewAuthorComponent},
   {path: 'newBook', component: NewBookComponent},
   {path: 'newGenre', component: NewGenreComponent},
-  {path: 'genres', component: GenresComponent}
+  {path: 'genres', component: GenresComponent},
+  {path: 'genres/:id', component: SpecificGenreComponent}
 ];
 
 @NgModule({
