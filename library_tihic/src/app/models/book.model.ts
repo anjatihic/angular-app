@@ -3,6 +3,7 @@ import { Genre } from "./genre.model";
 
 export interface Book {
   id: string;
+  title: string;
   author: Author;
   genre: Genre;
   allQuantity: number;

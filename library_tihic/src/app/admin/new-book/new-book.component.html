@@ -1,0 +1,64 @@
+<div class="background">
+  <div class="center-card">
+    <h1>Add book</h1>
+    <form>
+      <div class="form-input form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" class="form-control" placeholder="Type book's title">
+      </div>
+
+      <div class="form-input form-group">
+        <label for="author">Author</label>
+        <select name="author" id="author" class="form-control">
+          <option value="1">Author 1</option>
+          <option value="2">Author 2</option>
+          <option value="3">Author 3</option>
+        </select>
+      </div>
+      <a routerLink="/newAuthor"> The author doesn't exist? CLICK HERE</a>
+
+      <div class="form-input form-group">
+        <label for="picUrl">Picture URL</label>
+        <input type="url" id="picUrl" name="picUrl" class="form-control" placeholder="Insert cover photo URL">
+      </div>
+
+      <div class="form-input form-group">
+        <label for="syn">About book</label>
+        <textarea id="syn" name="syn" placeholder="Type about a book" class="form-control"></textarea>
+      </div>
+
+      <div class="double-input">
+        <div class="form-input form-group">
+          <label for="genre">Genre</label>
+          <select name="genre" id="genre" class="form-control">
+            <option value="1">genre 1</option>
+            <option value="2">genre 2</option>
+            <option value="3">genre 3</option>
+          </select>
+        </div>
+
+        <div class="form-input form-group">
+          <label for="numPages">Number of pages</label>
+          <input type="number" id="numPages" name="numPages" class="form-control" placeholder="Number of pages">
+        </div>
+      </div>
+
+      <a routerLink="/newGenre"> The genre doesn't exist? CLICK HERE</a>
+
+      <div class="form-input form-group">
+        <label for="datePublish">Date first published</label>
+        <input type="date" id="datePublish" name="datePublish" class="form-control">
+      </div>
+
+      <div class="form-input form-group">
+        <label for="numCopies">Number of available copies</label>
+        <input type="number" id="numCopies" name="numCopies" class="form-control" placeholder="Number of available copies">
+      </div>
+
+      <div class="center-button">
+        <button type="submit" class="btn btn-info">ADD BOOK</button>
+        <button type="button" class="btn btn-secondary">CLEAR</button>
+      </div>
+    </form>
+  </div>
+</div>
