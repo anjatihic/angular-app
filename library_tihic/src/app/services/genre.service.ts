@@ -18,10 +18,6 @@ export class GenreService {
     
   }
 
-  init(){
-    
-  }
-
   createNewGenre(name: string, about: string){
     const genreData = new Genre();
     genreData.about = about;

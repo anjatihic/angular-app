@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Book } from '../models/book.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,7 +11,6 @@ export class BookService {
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/book.json";
 
   allBooks: Book[] = [];
-  allBooksSub = new Subject<Book[]>();
 
   constructor(private http: HttpClient) { }
 
@@ -33,5 +32,17 @@ export class BookService {
       }, error => {
         this.error.next(error.message);
       })
+  }
+
+  getAllBooks(){
+    return this.http.get(this.DATABASE_URL)
+      .pipe(map((res: any) => {
+        const books = [];
+        for(let key in res){
+          books.push({...res[key], id: key});
+        }
+
+        return books;
+      }))
   }
 }
