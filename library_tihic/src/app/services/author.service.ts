@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject, map } from 'rxjs';
+import { BehaviorSubject, Subject, map } from 'rxjs';
 import { Author } from '../models/author.model';
 
 @Injectable({
@@ -10,6 +10,8 @@ export class AuthorService {
   error = new Subject<string>();
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/author.json";
 
+  allAuthors: Author[] = [];
+  loadedAuthorSub = new BehaviorSubject<Author> (new Author());
   constructor( private http: HttpClient) { }
 
   createNewAuthor(
@@ -18,7 +20,7 @@ export class AuthorService {
     dateDied?: string
   ){
     
-    const authorData = new Author(fName, lName, profilePicUrl, dateBorn, bio, dateDied);
+    const authorData = this.fillAnAuthorObject(fName, lName, profilePicUrl, dateBorn, bio, dateDied);
     
     if(dateDied){
       
@@ -42,5 +44,33 @@ export class AuthorService {
         }
         return allAuthors;
       }))
+  }
+
+  getAuthorById(id: string){
+    return this.getAllAuthors().pipe(map((res: Author[]) => {
+      this.allAuthors = res;
+      let author = new Author();
+      for(let a of this.allAuthors){
+        if(a.id == id){
+          author = a;
+          break;
+        }
+      }
+      return author;
+    }))
+  }
+
+  private fillAnAuthorObject(fName: string, lName: string,
+    profilePicUrl: string, dateBorn: string, bio: string,
+    dateDied?: string): Author{
+      let author = new Author();
+
+      author.fName = fName;
+      author.lName = lName;
+      author.profilePicUrl = profilePicUrl;
+      author.dateBorn = new Date(dateBorn);
+      author.bio = bio;
+
+      return author;
   }
 }
