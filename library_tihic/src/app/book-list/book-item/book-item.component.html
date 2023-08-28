@@ -1,0 +1,24 @@
+<div class="list-item-book">
+  <div class="left-side">
+    <img src="{{loadedBook.coverPicUrl}}" alt="{{loadedBook.title}}" class="coverPic">
+    <div class="basic-info">
+      <div class="title-and-author">
+        <h4>{{loadedBook.title}}</h4>
+        <p>{{loadedBook.authorId}}</p>
+      </div>
+
+      <p>{{loadedBook.datePublished | date : 'longDate'}}</p>
+    </div>
+  </div>
+
+  <div class="right-side">
+    <div class="book-actions btn-group">
+      <button class="btn btn-warning">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+
+    </div>
+    <a class="btn btn-outline-success">
+      Check availability
+    </a>
+  </div>
+</div>

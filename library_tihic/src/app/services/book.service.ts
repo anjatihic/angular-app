@@ -24,7 +24,8 @@ export class BookService {
     pages: number,
     coverPicUrl: string
   ) {
-    const bookData = new Book(title, authorId, genreId, allQuantity, datePublished, synopsis, pages, coverPicUrl);
+    const bookData = this.fillABookObject( title, authorId, genreId, allQuantity, datePublished, 
+      synopsis, pages, coverPicUrl);
 
     this.http.post(this.DATABASE_URL, bookData)
       .subscribe(response => {
@@ -44,5 +45,32 @@ export class BookService {
 
         return books;
       }))
+  }
+
+
+  private fillABookObject(
+    title: string,
+    authorId: string,
+    genreId: string,
+    allQuantity: number,
+    datePublished: string,
+    synopsis: string,
+    pages: number,
+    coverPicUrl: string
+  ): Book{
+    let book = new Book();
+
+    book.title = title;
+    book.authorId = authorId;
+    book.genreId = genreId;
+    book.allQuantity = allQuantity;
+    book.datePublished = new Date(datePublished);
+    book.synopsis = synopsis;
+    book.pages = pages;
+    book.coverPicUrl = coverPicUrl;
+
+    book.availableBooks = allQuantity;
+
+    return book;
   }
 }

@@ -15,6 +15,7 @@ import { NewGenreComponent } from './admin/new-genre/new-genre.component';
 import { GenresComponent } from './genres/genres.component';
 import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.component';
 import { BookListComponent } from './book-list/book-list.component';
+import { BookItemComponent } from './book-list/book-item/book-item.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BookListComponent } from './book-list/book-list.component';
     NewGenreComponent,
     GenresComponent,
     SpecificGenreComponent,
-    BookListComponent
+    BookListComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,

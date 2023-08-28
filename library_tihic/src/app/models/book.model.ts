@@ -10,29 +10,17 @@ export class Book {
   pages: number;
   coverPicUrl: string;
 
-  constructor(
-    title: string,
-    authorId: string,
-    genreId: string,
-    allQuantity: number,
-    datePublished: string,
-    synopsis: string,
-    pages: number,
-    coverPicUrl: string,
-    id?: string
-  ){
-    this.title = title;
-    this.authorId = authorId;
-    this.genreId = genreId;
-    this.allQuantity = allQuantity;
-    this.datePublished = new Date(datePublished);
-    this.synopsis = synopsis;
-    this.pages = pages;
-    this.coverPicUrl = coverPicUrl;
+  constructor(){
+    this.title = '';
+    this.authorId = '';
+    this.genreId = '';
+    this.allQuantity = 0;
+    this.datePublished = new Date();
+    this.synopsis = '';
+    this.pages = 0;
+    this.coverPicUrl = '';
 
-    this.availableBooks = allQuantity;
-
-    id ? this.id = id : this.id = undefined;
+    this.availableBooks = 0;
 
   }
 }
