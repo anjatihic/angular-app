@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'genres', component: GenresComponent},
   {path: 'genres/:id', component: SpecificGenreComponent},
   {path: 'authors', component: AuthorsComponent},
-  {path: 'authors/id', component: SpecificAuthorComponent}
+  {path: 'authors/:id', component: SpecificAuthorComponent}
 ];
 
 @NgModule({
