@@ -2,5 +2,5 @@
   <li *ngFor="let book of bookList" class="list-group-item">
     <app-book-item [loadedBook]="book"></app-book-item>
   </li>
-  <li *ngIf="bookList.length == 0" class="list-group-item">It seems that there are no books from this genre.</li>
+  <li *ngIf="bookList.length == 0" class="list-group-item">It seems that there are no books for this query.</li>
 </ul>

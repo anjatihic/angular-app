@@ -1,1 +1,16 @@
-<p>specific-author works!</p>
+<div class="background">
+  <div class="center-card">
+    <div class="banner">
+      <img class="photo" src="{{loadedAuthor.profilePicUrl}}" alt="{{loadedAuthor.lName}}">
+      <div class="author-info">
+        <h1>{{loadedAuthor.fName}} {{loadedAuthor.lName}}</h1>
+        <span class="dates">{{loadedAuthor.dateBorn | date}} - {{loadedAuthor.dateDied | date}}</span>
+        <p>{{loadedAuthor.bio}}</p>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <app-book-list [bookList]="booksOfAuthor"></app-book-list>
+    </div>
+  </div>
+</div>
