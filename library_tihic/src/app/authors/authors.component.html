@@ -1,1 +1,9 @@
-<p>authors works!</p>
+<div class="background">
+  <button *ngFor="let author of allAuthors" class="author-card">
+    <a routerLink="/authors/{{author.id}}" class="author-info">
+      <img src="{{author.profilePicUrl}}" alt="{{author.lName}}">
+      <h4>{{author.fName}} {{author.lName}}</h4>
+      <span>{{author.dateBorn | date}} - {{author.dateDied | date}}</span>
+    </a>
+  </button>
+</div>
