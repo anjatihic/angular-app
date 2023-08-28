@@ -17,6 +17,7 @@ import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.c
 import { BookListComponent } from './book-list/book-list.component';
 import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthorsComponent } from './authors/authors.component';
     SpecificGenreComponent,
     BookListComponent,
     BookItemComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    SpecificAuthorComponent
   ],
   imports: [
     BrowserModule,

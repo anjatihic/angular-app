@@ -9,6 +9,7 @@ import { NewGenreComponent } from './admin/new-genre/new-genre.component';
 import { GenresComponent } from './genres/genres.component';
 import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.component';
 import { AuthorsComponent } from './authors/authors.component';
+import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'newGenre', component: NewGenreComponent},
   {path: 'genres', component: GenresComponent},
   {path: 'genres/:id', component: SpecificGenreComponent},
-  {path: 'authors', component: AuthorsComponent}
+  {path: 'authors', component: AuthorsComponent},
+  {path: 'authors/id', component: SpecificAuthorComponent}
 ];
 
 @NgModule({
