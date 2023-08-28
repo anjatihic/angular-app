@@ -6,35 +6,7 @@
     </div>
 
     <div class="card-content">
-      <ul class="list-group">
-        <li *ngFor="let book of booksOfGenre" class="list-group-item">
-          <div class="list-item-book">
-            <div class="left-side">
-              <img src="{{book.coverPicUrl}}" alt="{{book.title}}" class="coverPic">
-              <div class="basic-info">
-                <div class="title-and-author">
-                  <h4>{{book.title}}</h4>
-                  <p>{{book.authorId}}</p>
-                </div>
-
-                <p>{{book.datePublished | date : 'longDate'}}</p>
-              </div>
-            </div>
-
-            <div class="right-side">
-              <div class="book-actions btn-group">
-                <button class="btn btn-warning">Edit</button>
-                <button class="btn btn-danger">Delete</button>
-
-              </div>
-              <a class="btn btn-outline-success">
-                Check availability
-              </a>
-            </div>
-          </div>
-        </li>
-        <li *ngIf="booksOfGenre.length == 0" class="list-group-item">It seems that there are no books from this genre.</li>
-      </ul>
+      <app-book-list [bookList]="booksOfGenre"></app-book-list>
     </div>
   </div>
 </div>
