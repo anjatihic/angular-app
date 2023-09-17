@@ -14,7 +14,11 @@ export class AuthService {
   loggedInUserSub = new BehaviorSubject<User>(new User());
   isItLoggedInSub = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    if(localStorage.getItem('user')){
+      this.isItLoggedInSub.next(true);
+    }
+   }
 
   createNewUser(
     fName: string, lName: string, username: string, email: string, pass: string
