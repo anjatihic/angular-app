@@ -19,6 +19,9 @@ export class AuthService {
     if(localStorage.getItem('user')){
       this.isItLoggedInSub.next(true);
       this.loggedUserRoleSub.next(localStorage.getItem('userRole')!);
+      this.findUserById(localStorage.getItem('user')!).subscribe( res => {
+        this.loggedInUserSub.next(res);
+      });
     }
    }
 
@@ -91,5 +94,20 @@ export class AuthService {
     user.pass = pass;
 
     return user;
+  }
+
+  private findUserById(id: string){
+    return this.getAllUsers().pipe(map((res: User[]) => {
+      const allUsers = res;
+      let user = new User();
+      for(let u of allUsers){
+        if(u.id == id){
+          user = u;
+          break;
+        }
+      }
+      this.loggedInUserSub.next(user);
+      return user;
+    }))
   }
 }
