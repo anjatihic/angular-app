@@ -31,13 +31,12 @@ export class LoginComponent {
 
     this.authService.login(username, pass).subscribe(res => {
       this.loggedInUser = res;
+      if(res.username != ''){
+        this.router.navigate(['/home']);
+      }else{
+        this.showError = true;
+      }
     });
-
-    if(this.loggedInUser.username == ''){
-      this.showError = true;
-    }else{
-      this.router.navigate(['/home']);
-    }
 
   }
 }

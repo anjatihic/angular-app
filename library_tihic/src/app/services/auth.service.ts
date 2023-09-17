@@ -54,8 +54,10 @@ export class AuthService {
         }
       }
       this.loggedInUserSub.next(user);
-      this.isItLoggedInSub.next(true);
-      localStorage.setItem('user', username);
+      if(user.username != ''){
+        this.isItLoggedInSub.next(true);
+        localStorage.setItem('user', username);
+      }
       return user;
     }))
 
