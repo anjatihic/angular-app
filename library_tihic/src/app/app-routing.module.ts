@@ -11,19 +11,20 @@ import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.c
 import { AuthorsComponent } from './authors/authors.component';
 import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
 import { SpecificBookComponent } from './specific-book/specific-book.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'newAuthor', component: NewAuthorComponent},
   {path: 'newBook', component: NewBookComponent},
   {path: 'newGenre', component: NewGenreComponent},
-  {path: 'genres', component: GenresComponent},
-  {path: 'genres/:id', component: SpecificGenreComponent},
-  {path: 'authors', component: AuthorsComponent},
-  {path: 'authors/:id', component: SpecificAuthorComponent},
-  {path: 'books/:bookId/:authorId', component: SpecificBookComponent}
+  {path: 'genres', component: GenresComponent, canActivate: [AuthGuard]},
+  {path: 'genres/:id', component: SpecificGenreComponent, canActivate: [AuthGuard]},
+  {path: 'authors', component: AuthorsComponent, canActivate: [AuthGuard]},
+  {path: 'authors/:id', component: SpecificAuthorComponent, canActivate: [AuthGuard]},
+  {path: 'books/:bookId/:authorId', component: SpecificBookComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

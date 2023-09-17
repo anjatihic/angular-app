@@ -5,3 +5,7 @@
 nav{
   padding-left: 10px;
 }
+
+.separate-buttons{
+  display: flex;
+}
