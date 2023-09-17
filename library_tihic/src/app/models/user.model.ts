@@ -1,7 +1,7 @@
 import { Loan } from "./loan.model";
 
-export interface User{
-  id: string;
+export class User{
+  id?: string;
   fName: string;
   lName: string;
   username: string;
@@ -9,4 +9,17 @@ export interface User{
   dateRegistered: Date;
   loans: Loan[];
   role: string;
+  pass: string;
+
+  constructor(){
+    this.fName = '';
+    this.lName = '';
+    this.username = '';
+    this.email = '';
+    this.dateRegistered = new Date();
+    this.loans = [];
+    this.role = 'user';
+    this.pass = '';
+
+  }
 }
