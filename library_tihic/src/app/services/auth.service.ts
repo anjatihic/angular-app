@@ -56,7 +56,7 @@ export class AuthService {
       this.loggedInUserSub.next(user);
       if(user.username != ''){
         this.isItLoggedInSub.next(true);
-        localStorage.setItem('user', username);
+        localStorage.setItem('user', user.id!);
         localStorage.setItem('userRole', user.role);
       }
       return user;
