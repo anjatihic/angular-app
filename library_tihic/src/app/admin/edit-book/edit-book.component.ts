@@ -30,8 +30,8 @@ export class EditBookComponent implements OnInit{
 
 
   constructor(private formBuilder: FormBuilder) {
-    this.newBookForm.controls.title.setValue(this.editingBook.title)
-    console.log(this.editingBook.title)
+    this.newBookForm.controls.title.setValue(this.editingBook.title) // doesnt work
+    console.log(this.editingBook.title)  // this is nothing?????
   }
   
 
