@@ -50,8 +50,8 @@
         </div>
 
       <div class="center-button">
-        <button type="submit" class="btn btn-info">REGISTER</button>
-        <button type="button" class="btn btn-secondary">CLEAR</button>
+        <button type="submit" class="btn btn-info" [disabled]="!newUserForm.valid">REGISTER</button>
+        <button type="reset" class="btn btn-secondary" [disabled]="newUserForm.untouched && !newUserForm.dirty">CLEAR</button>
       </div>
 
       <hr>
