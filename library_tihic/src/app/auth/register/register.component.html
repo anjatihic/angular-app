@@ -1,39 +1,53 @@
 <div class="background">
   <div class="center-card">
     <h1>Register</h1>
-    <form>
+    <form [formGroup]="newUserForm" (ngSubmit)="onRegister()">
       <div class="double-input">
         <div class="form-input form-group">
           <label for="fName">Name</label>
-          <input type="text" id="fName" name="fName" class="form-control" placeholder="Type your name">
+          <input formControlName="fName" type="text" id="fName" name="fName" class="form-control" placeholder="Type your name">
+          <p *ngIf="(newUserForm.controls['fName'].dirty || newUserForm.controls['fName'].touched) &&  !newUserForm.controls['fName'].valid"
+          class="errorMessage">Please enter your name</p>
         </div>
         
         <div class="form-input form-group">
           <label for="lName">Surname</label>
-          <input type="text" id="lName" name="lName" class="form-control" placeholder="Type your surname">
+          <input formControlName="lName" type="text" id="lName" name="lName" class="form-control" placeholder="Type your surname">
+          <p *ngIf="(newUserForm.controls['lName'].dirty || newUserForm.controls['lName'].touched) &&  !newUserForm.controls['lName'].valid"
+          class="errorMessage">Please enter your surname</p>
         </div>
       </div>
 
 
       <div class="form-input form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Type your username"> 
+        <input formControlName="username" type="text" id="username" name="username" class="form-control" placeholder="Type your username"> 
+        <p *ngIf="(newUserForm.controls['username'].dirty || newUserForm.controls['username'].touched) &&  !newUserForm.controls['username'].valid"
+          class="errorMessage">Please enter your username</p>
       </div>
 
       <div class="form-input form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" class="form-control" placeholder="Type your email"> 
+        <input formControlName="email" type="email" id="email" name="email" class="form-control" placeholder="Type your email"> 
+        <p *ngIf="(newUserForm.controls['email'].dirty || newUserForm.controls['email'].touched) &&  !newUserForm.controls['email'].valid"
+          class="errorMessage">Please enter your valid email</p>
       </div>
 
       <div class="form-input form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Type your password"> 
+        <input formControlName="pass" type="password" id="password" name="password" class="form-control" placeholder="Type your password"> 
+        <p *ngIf="(newUserForm.controls['pass'].dirty || newUserForm.controls['pass'].touched) &&  !newUserForm.controls['pass'].valid"
+          class="errorMessage">Please enter your passwod</p>
       </div>
 
       <div class="form-input form-group">
         <label for="passwordConf">Confirm password</label>
-        <input type="password" id="passwordConf" name="passwordConf" class="form-control" placeholder="Confirm your password"> 
-      </div>
+        <input formControlName="passConfirm" type="password" id="passwordConf" name="passwordConf" class="form-control" placeholder="Confirm your password"> 
+        <p *ngIf="(newUserForm.controls['passConfirm'].dirty || newUserForm.controls['passConfirm'].touched) &&  !newUserForm.controls['passConfirm'].valid"
+          class="errorMessage">Please enter the same password</p>
+        <p *ngIf="newUserForm.errors?.['PasswordNoMatch']"
+          class="errorMessage">Password doesn't match</p>
+        </div>
 
       <div class="center-button">
         <button type="submit" class="btn btn-info">REGISTER</button>

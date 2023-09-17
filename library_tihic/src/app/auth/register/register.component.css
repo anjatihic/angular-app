@@ -37,3 +37,8 @@
   margin-bottom: 30px;
   gap: 10px;
 }
+
+.errorMessage{
+  color: red;
+  font-size: small;
+}
