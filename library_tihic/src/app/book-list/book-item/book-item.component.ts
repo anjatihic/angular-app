@@ -12,6 +12,7 @@ export class BookItemComponent implements OnInit{
   @Input() loadedBook: Book = new Book();
 
   bookAuthor: Author = new Author();
+  userRole: string = '';
 
   constructor(private authorService: AuthorService) {}
 
@@ -20,6 +21,7 @@ export class BookItemComponent implements OnInit{
     this.authorService.getAuthorById(authorId).subscribe( res => {
       this.bookAuthor = res;
     })
-    
+    this.userRole = localStorage.getItem('userRole')!;
+
   }
 }

@@ -12,7 +12,7 @@
   </div>
 
   <div class="right-side">
-    <div class="book-actions btn-group">
+    <div class="book-actions btn-group" *ngIf="userRole == 'admin'">
       <button class="btn btn-warning">Edit</button>
       <button class="btn btn-danger">Delete</button>
 

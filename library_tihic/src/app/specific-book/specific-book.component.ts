@@ -13,6 +13,7 @@ import { AuthorService } from '../services/author.service';
 export class SpecificBookComponent implements OnInit{
   loadedBook = new Book();
   bookAuthor = new Author();
+  userRole = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +29,8 @@ export class SpecificBookComponent implements OnInit{
     this.authorService.getAuthorById(authorId).subscribe(res => {
       this.bookAuthor = res;
     })
+
+    this.userRole = localStorage.getItem('userRole')!;
   }
 
 }
