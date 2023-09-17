@@ -13,10 +13,12 @@ export class AuthService {
 
   loggedInUserSub = new BehaviorSubject<User>(new User());
   isItLoggedInSub = new BehaviorSubject<boolean>(false);
+  loggedUserRoleSub = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient, private router: Router) {
     if(localStorage.getItem('user')){
       this.isItLoggedInSub.next(true);
+      this.loggedUserRoleSub.next(localStorage.getItem('userRole')!);
     }
    }
 
@@ -60,8 +62,10 @@ export class AuthService {
       this.loggedInUserSub.next(user);
       if(user.username != ''){
         this.isItLoggedInSub.next(true);
+        this.loggedUserRoleSub.next(user.role);
         localStorage.setItem('user', user.id!);
         localStorage.setItem('userRole', user.role);
+        
       }
       return user;
     }))
@@ -71,6 +75,7 @@ export class AuthService {
   logout(){
     this.loggedInUserSub.next(new User());
     this.isItLoggedInSub.next(false);
+    this.loggedUserRoleSub.next('');
     localStorage.removeItem('user');
     localStorage.removeItem('userRole');
     this.router.navigate(['/login']);

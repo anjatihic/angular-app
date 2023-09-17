@@ -10,6 +10,7 @@ export class NavigationComponent {
 
   constructor(public authService: AuthService){
     this.authService.isItLoggedInSub.subscribe();
+    this.authService.loggedUserRoleSub.subscribe();
   }
 
   logout(){

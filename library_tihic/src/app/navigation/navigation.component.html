@@ -20,10 +20,10 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/authors">Authors</a>
         </li>
-        <li class="nav-item" *ngIf="authService.loggedInUserSub.value.role == 'admin'">
+        <li class="nav-item" *ngIf="authService.loggedUserRoleSub.value == 'admin'">
           <a class="nav-link" routerLink="/newAuthor">Add author</a>
         </li>
-        <li class="nav-item" *ngIf="authService.loggedInUserSub.value.role == 'admin'">
+        <li class="nav-item" *ngIf="authService.loggedUserRoleSub.value == 'admin'">
           <a class="nav-link" routerLink="/newBook">Add book</a>
         </li>
     </ul>
