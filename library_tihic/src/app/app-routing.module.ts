@@ -12,14 +12,15 @@ import { AuthorsComponent } from './authors/authors.component';
 import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
 import { SpecificBookComponent } from './specific-book/specific-book.component';
 import { AuthGuard } from './guards/auth.guard';
+import { RoleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: 'newAuthor', component: NewAuthorComponent},
-  {path: 'newBook', component: NewBookComponent},
-  {path: 'newGenre', component: NewGenreComponent},
+  {path: 'newAuthor', component: NewAuthorComponent, canActivate: [RoleGuard]},
+  {path: 'newBook', component: NewBookComponent, canActivate: [RoleGuard]},
+  {path: 'newGenre', component: NewGenreComponent, canActivate: [RoleGuard]},
   {path: 'genres', component: GenresComponent, canActivate: [AuthGuard]},
   {path: 'genres/:id', component: SpecificGenreComponent, canActivate: [AuthGuard]},
   {path: 'authors', component: AuthorsComponent, canActivate: [AuthGuard]},

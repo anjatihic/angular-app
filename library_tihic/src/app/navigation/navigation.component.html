@@ -6,7 +6,7 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div *ngIf="authService.isItLoggedInSub.value;" class="collapse navbar-collapse" id="navbarText">
+  <div *ngIf="authService.isItLoggedInSub.value" class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <button class="btn btn-outline-success" type="button" (click)="logout();">Logout</button>
@@ -20,10 +20,10 @@
         <li class="nav-item active">
           <a class="nav-link" routerLink="/authors">Authors</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="authService.loggedInUserSub.value.role == 'admin'">
           <a class="nav-link" routerLink="/newAuthor">Add author</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="authService.loggedInUserSub.value.role == 'admin'">
           <a class="nav-link" routerLink="/newBook">Add book</a>
         </li>
     </ul>

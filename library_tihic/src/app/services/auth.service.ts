@@ -57,6 +57,7 @@ export class AuthService {
       if(user.username != ''){
         this.isItLoggedInSub.next(true);
         localStorage.setItem('user', username);
+        localStorage.setItem('userRole', user.role);
       }
       return user;
     }))
@@ -67,6 +68,7 @@ export class AuthService {
     this.loggedInUserSub.next(new User());
     this.isItLoggedInSub.next(false);
     localStorage.removeItem('user');
+    localStorage.removeItem('userRole');
     this.router.navigate(['/login']);
   }
 
