@@ -9,11 +9,10 @@ import { AuthService } from '../services/auth.service';
 export class AuthGuard implements CanActivate {
 
   constructor(private router: Router, private authService: AuthService) {
-    this.authService.isItLoggedInSub.subscribe();
   }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 
-    if(this.authService.isItLoggedInSub.value){
+    if(localStorage.getItem('user') != null){
       return true;
     }
 

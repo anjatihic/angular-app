@@ -11,6 +11,8 @@ export class AuthService {
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/user.json"
 
   loggedInUserSub = new BehaviorSubject<User>(new User());
+  isItLoggedInSub = new BehaviorSubject<boolean>(false);
+
   constructor(private http: HttpClient) { }
 
   createNewUser(
@@ -51,12 +53,18 @@ export class AuthService {
         }
       }
       this.loggedInUserSub.next(user);
+      this.isItLoggedInSub.next(true);
+      localStorage.setItem('user', username);
       return user;
     }))
 
   }
 
-
+  logout(){
+    this.loggedInUserSub.next(new User());
+    this.isItLoggedInSub.next(false);
+    localStorage.removeItem('user');
+  }
 
   private fillAUserObject(fName: string, lName: string, username: string, email: string, pass: string){
     let user = new User();
