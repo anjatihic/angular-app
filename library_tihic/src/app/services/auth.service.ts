@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject, map } from 'rxjs';
 import * as bcrypt from 'bcryptjs';
+import { Route, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   loggedInUserSub = new BehaviorSubject<User>(new User());
   isItLoggedInSub = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   createNewUser(
     fName: string, lName: string, username: string, email: string, pass: string
@@ -64,6 +65,7 @@ export class AuthService {
     this.loggedInUserSub.next(new User());
     this.isItLoggedInSub.next(false);
     localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 
   private fillAUserObject(fName: string, lName: string, username: string, email: string, pass: string){
