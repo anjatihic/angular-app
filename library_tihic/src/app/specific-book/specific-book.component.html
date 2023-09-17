@@ -17,10 +17,12 @@
 
     <div class="card-content">
       <div class="borrow-book">
-        <button class="btn btn-success" routerLink="/books/{{loadedBook.id}}/{{bookAuthor.id}}">
+        <button *ngIf="!isBorrowed" (click)="onBorrow()" class="btn btn-success">
           Borrow this book
         </button>
-        <p>Available copies: {{loadedBook.availableBooks}}/{{loadedBook.allQuantity}}</p>
+        <button *ngIf="isBorrowed" disabled class="btn btn-success">
+          You already have this book
+        </button>
       </div>
 
       <div class="book-actions btn-group" *ngIf="userRole == 'admin'">

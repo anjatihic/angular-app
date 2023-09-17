@@ -24,8 +24,7 @@ export class NewBookComponent implements OnInit {
     syn: new FormControl('', Validators.required),
     genreId: new FormControl('', Validators.required),
     pages: new FormControl('', [Validators.required, Validators.min(1)]),
-    datePublished: new FormControl('', Validators.required),
-    quantity: new FormControl('', [Validators.required, Validators.min(1)])
+    datePublished: new FormControl('', Validators.required)
   })
 
   constructor(private genreService: GenreService,
@@ -50,11 +49,10 @@ export class NewBookComponent implements OnInit {
     let genreId = this.newBookForm.controls['genreId'].value!;
     let pages = Number(this.newBookForm.controls['pages'].value!);
     let datePublished = this.newBookForm.controls['datePublished'].value!;
-    let quantity = Number(this.newBookForm.controls['quantity'].value!);
   
     this.newBookForm.reset();
 
-    this.bookService.createNewBook(title, authorId, genreId, quantity, datePublished, syn, pages, photoUrl);
+    this.bookService.createNewBook(title, authorId, genreId, datePublished, syn, pages, photoUrl);
 
     this.created = true;
   

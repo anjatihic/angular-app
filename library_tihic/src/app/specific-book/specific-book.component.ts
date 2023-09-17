@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../services/book.service';
 import { Author } from '../models/author.model';
 import { AuthorService } from '../services/author.service';
+import { LoanService } from '../services/loan.service';
 
 @Component({
   selector: 'app-specific-book',
@@ -14,12 +15,14 @@ export class SpecificBookComponent implements OnInit{
   loadedBook = new Book();
   bookAuthor = new Author();
   userRole = '';
+  isBorrowed: boolean = false; // popraviti
 
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
     private authorService: AuthorService,
-    private router: Router
+    private router: Router,
+    private loanService: LoanService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +42,11 @@ export class SpecificBookComponent implements OnInit{
       this.bookService.deleteBookById(this.loadedBook.id!).subscribe();
       this.router.navigate(['/home']);
     }
+  }
+
+  onBorrow(){
+    this.loanService.createNewLoan(this.loadedBook);
+    this.isBorrowed = true;
   }
 
 }

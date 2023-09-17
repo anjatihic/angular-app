@@ -19,13 +19,12 @@ export class BookService {
     title: string,
     authorId: string,
     genreId: string,
-    allQuantity: number,
     datePublished: string,
     synopsis: string,
     pages: number,
     coverPicUrl: string
   ) {
-    const bookData = this.fillABookObject( title, authorId, genreId, allQuantity, datePublished, 
+    const bookData = this.fillABookObject( title, authorId, genreId, datePublished, 
       synopsis, pages, coverPicUrl);
 
     this.http.post(this.DATABASE_URL, bookData)
@@ -65,7 +64,6 @@ export class BookService {
     title: string,
     authorId: string,
     genreId: string,
-    allQuantity: number,
     datePublished: string,
     synopsis: string,
     pages: number,
@@ -76,13 +74,10 @@ export class BookService {
     book.title = title;
     book.authorId = authorId;
     book.genreId = genreId;
-    book.allQuantity = allQuantity;
     book.datePublished = new Date(datePublished);
     book.synopsis = synopsis;
     book.pages = pages;
     book.coverPicUrl = coverPicUrl;
-
-    book.availableBooks = allQuantity;
 
     return book;
   }
