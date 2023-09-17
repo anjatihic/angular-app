@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { BehaviorSubject, map } from 'rxjs';
+import * as bcrypt from 'bcryptjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ import { User } from '../models/user.model';
 export class AuthService {
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/user.json"
 
+  loggedInUserSub = new BehaviorSubject<User>(new User());
   constructor(private http: HttpClient) { }
 
   createNewUser(
@@ -22,6 +25,35 @@ export class AuthService {
       }, error => {
         console.error(error.message);
       });
+  }
+
+  getAllUsers(){
+    return this.http.get(this.DATABASE_URL)
+      .pipe( map((res: any) => {
+        const allUsers = [];
+        for(let key in res){
+          allUsers.push({...res[key], id: key});
+        }
+        return allUsers;
+      }))
+  }
+
+  login(
+    username: string, pass: string
+  ){
+    return this.getAllUsers().pipe(map((res: User[]) => {
+      const allUsers = res;
+      let user = new User();
+      for(let u of allUsers){
+        if(u.username == username && bcrypt.compareSync(pass, u.pass)){
+          user = u;
+          break;
+        }
+      }
+      this.loggedInUserSub.next(user);
+      return user;
+    }))
+
   }
 
 

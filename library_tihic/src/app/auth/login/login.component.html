@@ -1,23 +1,30 @@
 <div class="background">
   <div class="center-card">
     <h1>Login</h1>
-    <form>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-input form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" name="username" class="form-control" placeholder="Type your username"> 
+        <input formControlName="username" type="text" id="username" name="username" class="form-control" placeholder="Type your username"> 
+        <p *ngIf="(loginForm.controls['username'].dirty || loginForm.controls['username'].touched) &&  !loginForm.controls['username'].valid"
+          class="errorMessage">Please enter your username</p>
       </div>
 
       <div class="form-input form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" placeholder="Type your password"> 
+        <input formControlName="pass" type="password" id="password" name="password" class="form-control" placeholder="Type your password"> 
+        <p *ngIf="(loginForm.controls['pass'].dirty || loginForm.controls['pass'].touched) &&  !loginForm.controls['pass'].valid"
+          class="errorMessage">Please enter your password</p>
       </div>
-
+      
+      <p *ngIf="showError" class="errorMessage">{{errorMessage}}</p>
       <div class="center-button">
         <button type="submit" class="btn btn-info">LOGIN</button>
       </div>
 
+
       <hr>
       <a routerLink="/register" routerLinkActive="active">Don't have an account? Click here</a>
+  
     </form>
   </div>
 </div>
