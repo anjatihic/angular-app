@@ -1,0 +1,33 @@
+<div class="background">
+  <div class="center-card">
+    <div class="banner">
+      <img class="photo" src="{{loadedBook.coverPicUrl}}" alt="{{loadedBook.title}}">
+      <div class="author-info">
+        <div>
+          <h1>{{loadedBook.title}}</h1>
+          <a class="dates" routerLink="/authors/{{bookAuthor.id}}">{{bookAuthor.fName}} {{bookAuthor.lName}}</a>
+          <p>{{loadedBook.synopsis}}</p>
+        </div>
+        <div>
+          <p>Date first published: {{loadedBook.datePublished | date}}</p>
+          <p>Number of pages: {{loadedBook.pages}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <div class="borrow-book">
+        <button class="btn btn-success" routerLink="/books/{{loadedBook.id}}/{{bookAuthor.id}}">
+          Borrow this book
+        </button>
+        <p>Available copies: {{loadedBook.availableBooks}}/{{loadedBook.allQuantity}}</p>
+      </div>
+
+      <div class="book-actions btn-group">
+        <button class="btn btn-warning">Edit</button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

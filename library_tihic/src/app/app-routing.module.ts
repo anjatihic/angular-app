@@ -10,6 +10,7 @@ import { GenresComponent } from './genres/genres.component';
 import { SpecificGenreComponent } from './genres/specific-genre/specific-genre.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
+import { SpecificBookComponent } from './specific-book/specific-book.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'genres', component: GenresComponent},
   {path: 'genres/:id', component: SpecificGenreComponent},
   {path: 'authors', component: AuthorsComponent},
-  {path: 'authors/:id', component: SpecificAuthorComponent}
+  {path: 'authors/:id', component: SpecificAuthorComponent},
+  {path: 'books/:bookId/:authorId', component: SpecificBookComponent}
 ];
 
 @NgModule({

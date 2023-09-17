@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, map } from 'rxjs';
+import { BehaviorSubject, Subject, map } from 'rxjs';
 import { Book } from '../models/book.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,6 +11,7 @@ export class BookService {
   DATABASE_URL = "https://angular-library-8b92a-default-rtdb.firebaseio.com/book.json";
 
   allBooks: Book[] = [];
+  loadedBookSub = new BehaviorSubject<Book>(new Book());
 
   constructor(private http: HttpClient) { }
 
@@ -45,6 +46,14 @@ export class BookService {
 
         return books;
       }))
+  }
+
+  getBookById(id: string) {
+    return this.getAllBooks().subscribe(res => {
+      this.allBooks = res;
+      let book = this.allBooks.find(b => b.id == id);
+      if(book) this.loadedBookSub.next(book);
+    })
   }
 
 

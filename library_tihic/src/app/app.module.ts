@@ -18,6 +18,7 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookItemComponent } from './book-list/book-item/book-item.component';
 import { AuthorsComponent } from './authors/authors.component';
 import { SpecificAuthorComponent } from './authors/specific-author/specific-author.component';
+import { SpecificBookComponent } from './specific-book/specific-book.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SpecificAuthorComponent } from './authors/specific-author/specific-auth
     BookListComponent,
     BookItemComponent,
     AuthorsComponent,
-    SpecificAuthorComponent
+    SpecificAuthorComponent,
+    SpecificBookComponent
   ],
   imports: [
     BrowserModule,
