@@ -56,6 +56,10 @@ export class BookService {
     })
   }
 
+  deleteBookById(id: string){
+    return this.http.delete("https://angular-library-8b92a-default-rtdb.firebaseio.com/book/" + id + ".json");
+  }
+
 
   private fillABookObject(
     title: string,
