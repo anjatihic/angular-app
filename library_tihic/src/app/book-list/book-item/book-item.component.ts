@@ -16,6 +16,8 @@ export class BookItemComponent implements OnInit{
   bookAuthor: Author = new Author();
   userRole: string = '';
 
+  enableEditing = false;
+
   constructor(private authorService: AuthorService, private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
@@ -32,5 +34,9 @@ export class BookItemComponent implements OnInit{
       this.bookService.deleteBookById(this.loadedBook.id!).subscribe();
       this.router.navigate(['/home']);
     }
+  }
+
+  onEdit(){
+    this.enableEditing = !this.enableEditing;
   }
 }

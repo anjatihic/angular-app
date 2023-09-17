@@ -13,7 +13,7 @@
 
   <div class="right-side">
     <div class="book-actions btn-group" *ngIf="userRole == 'admin'">
-      <a routerLink="/editBook/{{loadedBook.id}}" class="btn btn-warning">Edit</a>
+      <button (click)="onEdit()" class="btn btn-warning">Edit</button>
       <button (click)="onDelete()" class="btn btn-danger">Delete</button>
 
     </div>
@@ -22,3 +22,4 @@
     </a>
   </div>
 </div>
+<app-edit-book *ngIf="enableEditing" [editingBook]="loadedBook"></app-edit-book>

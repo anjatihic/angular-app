@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'newAuthor', component: NewAuthorComponent, canActivate: [RoleGuard]},
   {path: 'newBook', component: NewBookComponent, canActivate: [RoleGuard]},
-  {path: 'editBook/:id', component: EditBookComponent, canActivate: [RoleGuard]},
   {path: 'newGenre', component: NewGenreComponent, canActivate: [RoleGuard]},
   {path: 'genres', component: GenresComponent, canActivate: [AuthGuard]},
   {path: 'genres/:id', component: SpecificGenreComponent, canActivate: [AuthGuard]},
