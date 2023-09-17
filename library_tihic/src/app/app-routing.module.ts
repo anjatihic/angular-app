@@ -13,6 +13,7 @@ import { SpecificAuthorComponent } from './authors/specific-author/specific-auth
 import { SpecificBookComponent } from './specific-book/specific-book.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+import { EditBookComponent } from './admin/edit-book/edit-book.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'newAuthor', component: NewAuthorComponent, canActivate: [RoleGuard]},
   {path: 'newBook', component: NewBookComponent, canActivate: [RoleGuard]},
+  {path: 'editBook/:id', component: EditBookComponent, canActivate: [RoleGuard]},
   {path: 'newGenre', component: NewGenreComponent, canActivate: [RoleGuard]},
   {path: 'genres', component: GenresComponent, canActivate: [AuthGuard]},
   {path: 'genres/:id', component: SpecificGenreComponent, canActivate: [AuthGuard]},

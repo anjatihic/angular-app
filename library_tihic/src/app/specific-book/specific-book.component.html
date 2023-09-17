@@ -24,7 +24,7 @@
       </div>
 
       <div class="book-actions btn-group" *ngIf="userRole == 'admin'">
-        <button class="btn btn-warning">Edit</button>
+        <a routerLink="/editBook/{{loadedBook.id}}" class="btn btn-warning">Edit</a>
         <button (click)="onDelete()" class="btn btn-danger">Delete</button>
       </div>
     </div>
