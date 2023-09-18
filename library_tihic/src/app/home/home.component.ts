@@ -13,6 +13,7 @@ import { Book } from '../models/book.model';
 export class HomeComponent implements OnInit{
   loggedInUser = new User();
   currentLoanedBooks:  Book[] = [];
+  pastLoanedBooks: Book[] = [];
   
   constructor(private authService: AuthService, private loanService: LoanService) {}
 
@@ -25,6 +26,14 @@ export class HomeComponent implements OnInit{
       if(res){
         for(let l of res){
           this.currentLoanedBooks.push(l.book);
+        }
+      }
+    })
+
+    this.loanService.getAllPastLoansByUser().subscribe(res => {
+      if(res){
+        for(let l of res){
+          this.pastLoanedBooks.push(l.book);
         }
       }
     })

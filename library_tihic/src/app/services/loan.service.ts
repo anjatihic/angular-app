@@ -54,6 +54,20 @@ export class LoanService {
       
   }
 
+  getAllPastLoansByUser(){
+    let userId = localStorage.getItem('user');
+
+    return this.getAllLoans().pipe(map((res: Loan[]) => {
+      let pastLoans = [];
+      for(let l of res){
+        if(l.userId == userId && this.checkDatePast(l.dueDate)){
+          pastLoans.push(l);
+        }
+      }
+      return pastLoans;
+    }))
+  }
+
   private checkDateInBetween(dateLoaned: Date, dueDate: Date): boolean{
     let currentDate = formatDate(new Date(), 'yyyy-MM-dd','en_US');
     let date1 = formatDate(new Date(dateLoaned), 'yyyy-MM-dd','en_US');
@@ -64,5 +78,17 @@ export class LoanService {
     }
 
     return false;
+  }
+
+  private checkDatePast(dueDate: Date): boolean{
+    let currentDate = formatDate(new Date(), 'yyyy-MM-dd','en_US');
+    let date1 = formatDate(new Date(dueDate), 'yyyy-MM-dd','en_US');
+
+    if(currentDate > date1){
+      return true;
+    }
+
+    return false;
+
   }
 }
