@@ -16,6 +16,7 @@ export class SpecificBookComponent implements OnInit{
   bookAuthor = new Author();
   userRole = '';
   isBorrowed: boolean = false; // popraviti
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,18 @@ export class SpecificBookComponent implements OnInit{
     })
 
     this.userRole = localStorage.getItem('userRole')!;
+
+    this.loanService.getAllCurrentLoansByUser().subscribe(res => {
+      if(res){
+        for(let l of res){
+          if(l.book.id == this.loadedBook.id){
+            this.isBorrowed = true;
+            break;
+          }
+        }
+        this.isLoading = false;
+      }
+    })
   }
 
   onDelete(){

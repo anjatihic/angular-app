@@ -17,10 +17,13 @@
 
     <div class="card-content">
       <div class="borrow-book">
-        <button *ngIf="!isBorrowed" (click)="onBorrow()" class="btn btn-success">
+        <button *ngIf="isLoading" disabled class="btn btn-success">
+          <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+        </button>
+        <button *ngIf="!isBorrowed && !isLoading" (click)="onBorrow()" class="btn btn-success">
           Borrow this book
         </button>
-        <button *ngIf="isBorrowed" disabled class="btn btn-success">
+        <button *ngIf="isBorrowed && !isLoading" disabled class="btn btn-success">
           You already have this book
         </button>
       </div>
