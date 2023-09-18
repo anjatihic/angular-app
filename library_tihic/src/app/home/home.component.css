@@ -29,3 +29,10 @@
   align-items: center;
   background-color: aliceblue;
 }
+
+.card-content{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

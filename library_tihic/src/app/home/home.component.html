@@ -5,11 +5,23 @@
     </div>
 
     <div class="card-content">
-      <h2>Your currently loaned books</h2>
-      <app-book-list [bookList]="currentLoanedBooks"></app-book-list>
+      <div>
+        <h2>Your currently loaned books</h2>
+        <app-book-list [bookList]="currentLoanedBooks"></app-book-list>
+      </div>
 
-      <h2>Your past loans</h2>
-      <app-book-list [bookList]="pastLoanedBooks"></app-book-list>
+      <div>
+        <h2>Your past loans</h2>
+        <app-book-list [bookList]="pastLoanedBooks"></app-book-list>
+      </div>
+
+      <div>
+        <h2>User info</h2>
+        <p>Username: {{loggedInUser.username}}</p>
+        <p>E-mail: {{loggedInUser.email}}</p>
+        <p>Date registered: {{loggedInUser.dateRegistered | date}}</p>
+        <p>User role: {{loggedInUser.role}}</p>
+      </div>
 
     </div>
   </div>
