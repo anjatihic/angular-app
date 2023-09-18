@@ -45,7 +45,7 @@ export class LoanService {
     return this.getAllLoans().pipe(map((res: Loan[]) => {
       let currentLoans = [];
       for(let l of res){
-        if(l.userId == userId && this.checkDate(l.dateLoaned, l.dueDate)){
+        if(l.userId == userId && this.checkDateInBetween(l.dateLoaned, l.dueDate)){
           currentLoans.push(l);
         }
       }
@@ -54,7 +54,7 @@ export class LoanService {
       
   }
 
-  private checkDate(dateLoaned: Date, dueDate: Date): boolean{
+  private checkDateInBetween(dateLoaned: Date, dueDate: Date): boolean{
     let currentDate = formatDate(new Date(), 'yyyy-MM-dd','en_US');
     let date1 = formatDate(new Date(dateLoaned), 'yyyy-MM-dd','en_US');
     let date2 = formatDate(new Date(dueDate), 'yyyy-MM-dd','en_US');
